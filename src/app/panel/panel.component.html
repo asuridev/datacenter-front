@@ -1,0 +1,118 @@
+<div >
+  <div *ngIf="isAdmin" class="header-panel">
+    <mat-slide-toggle (change)="changeToggle($event)">Ver Reporte</mat-slide-toggle>
+    <div *ngIf="report" class="header-filter">
+      <span>Filtrar</span>
+      <mat-form-field class="operator-filer">
+        <mat-label>Operador</mat-label>
+        <mat-select (selectionChange)="filterOperator($event)" multiple>
+          @for (operator of operators; track operator) {
+          <mat-option  [value]="operator.id">{{operator.name}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field class="seller-filer">
+        <mat-label>Vendedor</mat-label>
+        <mat-select (selectionChange)="filterSeller($event)" multiple>
+          @for (user of users; track user) {
+          <mat-option [value]="user.id">{{user.name}} {{" "}} {{user.lastName}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <mat-card *ngIf="!report">
+      <mat-card-title>Panel De Recarga</mat-card-title>
+      <div class="row header-form">
+        <h2>
+          <span>{{role | lowercase}} {{": "}}</span>
+          <span>{{name}} {{" "}} {{lastName}}</span>
+        </h2>
+        <button (click)="logout()" type="submit" mat-raised-button color="warn">Salir</button>
+      </div>
+      <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="recharge()">
+
+          <div class="row">
+            <mat-form-field class="field">
+              <input type="number" matInput placeholder="Telephone" formControlName="telephone">
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Operador</mat-label>
+              <mat-select formControlName="operator">
+                @for (operator of operators; track operator) {
+                <mat-option [value]="operator.id">{{operator.name}}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <mat-form-field>
+            <input type="number" matInput placeholder="Value" formControlName="value">
+          </mat-form-field>
+
+
+          <div class="button">
+            <button type="submit" mat-raised-button color="primary">Recargar</button>
+          </div>
+
+          <p *ngIf="confirmation" class="success">
+            {{ confirmation }}
+          </p>
+
+          <p *ngIf="error" class="error">
+            {{ error }}
+          </p>
+
+        </form>
+      </mat-card-content>
+    </mat-card>
+
+    <div *ngIf="report" class="wrapper-table">
+      <table  mat-table [dataSource]="infoReport" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+  
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+        </ng-container>
+  
+        <!-- Name Column -->
+        <ng-container matColumnDef="telephone">
+          <th mat-header-cell *matHeaderCellDef> Telefono </th>
+          <td mat-cell *matCellDef="let element"> {{element.telephone}} </td>
+        </ng-container>
+  
+        <!-- Weight Column -->
+        <ng-container matColumnDef="operator">
+          <th mat-header-cell *matHeaderCellDef> Operador </th>
+          <td mat-cell *matCellDef="let element"> {{element.operator}} </td>
+        </ng-container>
+  
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="value">
+          <th mat-header-cell *matHeaderCellDef> Valor </th>
+          <td mat-cell *matCellDef="let element"> {{element.value}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="seller">
+          <th mat-header-cell *matHeaderCellDef> Vendedor </th>
+          <td mat-cell *matCellDef="let element"> {{element.seller}} </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+  
+  </div>
+
+</div>

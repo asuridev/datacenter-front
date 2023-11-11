@@ -1,0 +1,82 @@
+*{
+  box-sizing: border-box;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+mat-slide-toggle{
+  margin: 2rem;
+  margin-left: 4rem;
+}
+
+mat-card {
+  width: 480px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-card-title {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1rem;
+}
+.row{
+  display: flex;
+  justify-content: space-between;
+}
+.header-form{
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+h2{
+  font-weight: 300;
+}
+.wrapper-table{
+  width: 700px;
+}
+
+.row mat-form-field {
+  width: 48%;
+}
+
+.success{
+  padding: 0.5rem;
+  color: green;
+  text-align: center;
+}
+.error {
+  padding: 0.5rem;
+  color: red;
+}
+table {
+  width: 100%;
+}
+.button {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header-panel{
+  display: flex;
+  margin-left: 2rem;
+  align-items: center;
+}
+
+.header-filter{
+  display: flex;
+  align-items: center;
+  margin-left: 2rem;
+}
+
+.operator-filer{
+  margin-left: 2rem;
+}
+
+.seller-filer{
+  margin-left: 2rem;
+}

@@ -1,0 +1,31 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-card {
+  max-width: 420px;
+}
+
+mat-form-field {
+  width: 100%;
+  min-width: 100%;
+}
+
+mat-card-title {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1rem;
+}
+
+.error {
+  padding: 0.5rem;
+  color: red;
+}
+
+.button {
+  display: flex;
+  justify-content: flex-end;
+}
